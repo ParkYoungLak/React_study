@@ -1,0 +1,37 @@
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import Header from './Header';
+//<script src="./App.js"></script>
+import reportWebVitals from './reportWebVitals';
+// App,Header react Component 라고함.
+// Component 는 element로 구성된 도구로 개발자가 정의함.
+// ReactDOM.render() 컴퍼넌트를 랜더,출력하는 함수.
+// ReactDOM 은 html 유사 element.
+class Test extends React.Component{
+  constructor (props){
+    super(props);
+  }
+  render(){
+    return (
+    <h1>hello</h1>
+    );
+  }
+}
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Test/>
+    <Header title={"React Study"} 
+    nav_li={[{text:"Component", url:"/component.html"},{text:"props",url:"/props.html"},
+  {text:"state",url:"/state.html"}]}/>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
