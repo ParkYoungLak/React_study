@@ -9,20 +9,11 @@ import reportWebVitals from './reportWebVitals';
 // Component 는 element로 구성된 도구로 개발자가 정의함.
 // ReactDOM.render() 컴퍼넌트를 랜더,출력하는 함수.
 // ReactDOM 은 html 유사 element.
-class Test extends React.Component{
-  constructor (props){
-    super(props);
-  }
-  render(){
-    return (
-    <h1>hello</h1>
-    );
-  }
-}
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Test/>
+    
     <Header title={"React Study"} 
     nav_li={[{text:"Component", url:"/component.html"},{text:"props",url:"/props.html"},
   {text:"state",url:"/state.html"}]}/>
