@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Header from './Header';
+import Calculator from './Calculator';
 //<script src="./App.js"></script>
 import reportWebVitals from './reportWebVitals';
 // App,Header react Component 라고함.
@@ -15,9 +16,11 @@ ReactDOM.render(
   <React.StrictMode>
     
     <Header title={"React Study"} 
-    nav_li={[{text:"Component", url:"/component.html"},{text:"props",url:"/props.html"},
-  {text:"state",url:"/state.html"}]}/>
+    nav_li={[{text:"계산기", url:"/#calculator"},
+    {text:"props",url:"/props.html"},
+    {text:"state",url:"/state.html"}]}/>
     <App />
+    <Calculator/>
   </React.StrictMode>,
   document.getElementById('root')
 );

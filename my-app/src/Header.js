@@ -12,10 +12,13 @@ function Header(props){
   
   const [clockMount,setClockMount] = useState("true"); 
   const nav_li_arr=[];
+  const li_click_handle=function(e){
+    let target_component = e.target.href.split("#")[1];
+  }
   for(let i=0; i<props.nav_li.length;i++){
     //console.log(props.nav_li[i]);
     //react 는 jsx li element를 배열에서 출력할때 꼭 유니크한 키를 줘야함.
-    nav_li_arr.push(<li key={"li_"+i}><a src={props.nav_li[i].url}>{props.nav_li[i].text}</a></li>)
+    nav_li_arr.push(<li key={"li_"+i}><a href={props.nav_li[i].url} onClick={li_click_handle}>{props.nav_li[i].text}</a></li>)
   }
 
   function titleClick(){
@@ -30,9 +33,10 @@ function Header(props){
   
   //console.log(nav_li_arr);
   function deleteClock(){
-    console.log("Clock has been terminated.")
+    //console.log("Clock has been terminated.")
     setClockMount(false);
   };
+  //{A && B} A=true이면  B도검사해서 B가 true면 출력.
   return (
     <header>
     <h1 style={titleStyle} onClick={titleClick}> {title}</h1>

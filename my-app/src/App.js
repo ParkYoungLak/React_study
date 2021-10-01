@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      .
+      계산기 들어올 자리?
     </div>
   );
 }
