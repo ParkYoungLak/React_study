@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react state</title>
+</head>
+<body>
+  <h1>React state</h1>
+  <p>Component 는 state 객체를 갖는데 이 state 는 변겨오디는 값을 바로 Component에 전달 할 수 있다.</p>
+  <article>
+    <h2>class Component state 사용법</h2>
+    <ul>
+      <li>import React,{Component} from 'react'; 을 선언한다. </li>
+      <li>Constructor 를 구현한다.(Constructor(props) {super(props)})</li>
+      <li>Constructor 에서 this.state={updatedata: 0}에 변경될 값을 json으로 선언한다.</li>
+      <li>render()에서 출력하는 Component에 {this.state.updatedata}로 수정될 곳을 정한다.</li>
+      <li>Component에서 사용할 이벤트 함수를 구현 후 this.setState({updatedata:2})로 값을 변경한다. </li>
+      <li>warning!! : this.state.updatedata=2;(x) 수정전 데이터가 사라져 업데이트 여부를 판단할 수가 없다.</li>
+    </ul>
+  </article>
+  <article>
+    <h2>function Component state 사용법(React Hook)</h2>
+    <p>React 의 함수 컴퍼넌트는 출력 전용으로 수정하는 state를 제공하지 않아 사용되지 않다가 Hook 가 등장하면서 다시사용됨.</p>
+    <ul>
+      <li>import React,{useState} from 'react';</li>
+      <li>function ComponentA(props){} or const ComponentA=(props)=>{} 으로 컴퍼넌트 함수 선언. </li>
+      <li>함수의 상단에 const [updatedata, setupdatedata] = useState(0) 으로 초기값을 선언. </li>
+      <li>class this.setState({updatedata:2}) == function setUpdateData(2)</li>
+      <li>return 에서 출력하는 Component에 {updatedata} 로 수정될 곳을 정한다.</li>
+      <li>이벤트 함수를 구현 후 setUpdateData(2)로 값을 2로 변경한다. </li>
+    </ul>
+  </article>
+  <article>
+    <h2>React state 의 생명주기(lifecycle)</h2>
+    <ul>
+      <li>Component가 출력되고 다시 update 되는 시점은 (new props, setState(),force-update())세가지로 정상적인 update는 setState이다</li>
+      <li>HTML DOM이 수정되는 시점은 이벤트나 애니메이션이 실행중일 때로 React DOm역시 이벤트로 수정되고 
+        이벤트에 setState() 로 DOM의 상태를 변경한다. </li>
+      <li>setState()가 호출되면 getDerivedStateFromProps() 가 최초로 실행되면서 
+        render할 Component의 props와 state를 세팅한다. </li>
+      <li>만약 state의 값이 변경되었다면 ShouldComponentUpdate()가 실행된다. 이때 개발자는 state의 변경상태로 render 제어할 수 있다.</li>
+      <li>실수로 setState() 대신 this.state.date=""로 값을 변경했다면 ShouldComponentUpdate에서 상태 변경을 확인할 수 없다.</li>
+      <li>ShouldComponentUpdate()에서 render를 결정하면 실제 render를 실행해 Component가 출력될 준비를 한다. </li>
+      <li>render 도중에 getSnapshotBrforeUpdate()가 update 되기 전 window 의 상태를 확인하여 
+        update 될 window상태를 조정할 수 있다.(update 되기 전 스크롤 위치를 알고 update 이후 스크롤 상태적용)</li>
+      <li>업데이트가 완료되면 componentDidUpdate()가 실행된다. </li>
+    </ul>
+  </article>
+</body>
+</html>
